@@ -1,0 +1,13 @@
+---
+# tasks file for apache-role
+- name: 1. install Apache
+  yum: name=httpd  state=present
+
+- name: 2. install PHP module for Apache
+  yum: name=php state=present
+
+- name: 3. start Apache
+  service: name=httpd state=started enabled=yes
+
+- name: 4. install Hello World PHP script
+  copy: src=index.php dest=/var/www/index.php mode=0664
